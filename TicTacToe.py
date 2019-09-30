@@ -107,10 +107,6 @@ class TicTacToe:
                     print(table)
             return bestValue
 
-
-
-
-
     def generateStates(self, aux, table):
         statesGenerated = []
 
@@ -130,7 +126,6 @@ class TicTacToe:
                         auxTable[int(x)][int(y)] = 'o'
                         statesGenerated.append(auxTable)
         return statesGenerated
-                
 
     def isFinal(self, table):
 
