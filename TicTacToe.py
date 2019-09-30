@@ -27,9 +27,10 @@ class TicTacToe:
    
     def makePlay(self):
         numPlays = 0
+        print("Número de jogadas: " + str(numPlays))
+        self.printBoard()
         while numPlays < 9:
             while self.turn:
-                print("Número de jogadas: " + str(numPlays))
                 print("Insira a posição em X: ")
                 x = input()
                 
@@ -39,8 +40,9 @@ class TicTacToe:
                 if self.boardTable[int(x)][int(y)] == '-' :
                     self.boardTable[int(x)][int(y)] = 'o'
                     os.system('clear')
-
+                    
                     self.printBoard()
+
                     self.turn = False
                     numPlays += 1
 
@@ -80,8 +82,11 @@ class TicTacToe:
             bestValue = -10000
             #Escolhe a melhor pior jogada:
             for i in range(0, len(self.movesList)):
-                if int(pontuationList[i]) > int(bestValue):
-                    bestValue = pontuationList[i]
+                if(self.isFinal(self.movesList[i])):
+                    table = self.movesList[i]
+                    return table
+                elif int(pontuationList[i]) > int(bestValue):
+                    bestValue = pontuationList[i]    
                     table = self.movesList[i]
             
             self.movesList = []
